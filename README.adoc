@@ -1,10 +1,10 @@
-= devcntr.app
+= devcentr.app
 
-The application homepage and marketing site for link:https://github.com/devcntr-org/devcntr[DevCntr].
+The application homepage and marketing site for link:https://github.com/dev-centr/devcentr[Dev-Centr].
 
 == 🌍 Domain
 
-* **URL:** link:https://devcntr.app[devcntr.app]
+* **URL:** link:https://devcentr.app[devcentr.app]
 
 == 🛠️ Stack
 

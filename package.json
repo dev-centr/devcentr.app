@@ -1,5 +1,5 @@
 {
-  "name": "devcntr.app",
+  "name": "devcentr.app",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
