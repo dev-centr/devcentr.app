@@ -2,20 +2,20 @@ link:https://devcentr.app[image:https://img.shields.io/badge/site-devcentr.app-2
 
 = devcentr.app
 
-The application homepage and marketing site for link:https://github.com/dev-centr/devcentr[Dev-Centr].
+Product marketing site for the link:https://github.com/dev-centr/devcentr[DevCentr] Development Orchestration Suite (DOS).
 
-== 🌍 Domain
+== Domain
 
 * **URL:** link:https://devcentr.app[devcentr.app]
+* **Hosting:** GitHub Pages (static SolidStart export)
 
-== 🛠️ Stack
+== Stack
 
-* **Framework:** link:https://start.solidjs.com/[SolidStart] (Solid.js full-stack)
-* **Engine:** link:https://vinxi.vercel.app/[Vinxi]
-* **Language:** TypeScript
-* **Package Manager:** pnpm
+* **Framework:** link:https://start.solidjs.com/[SolidStart]
+* **Styling:** Tailwind CSS v4 (steel/teal brand shared with link:https://devcentr.org[devcentr.org])
+* **Package manager:** pnpm
 
-== 🚀 Getting Started
+== Getting started
 
 [source,bash]
 ----
@@ -23,13 +23,15 @@ pnpm install
 pnpm dev
 ----
 
-== 📂 Project Structure
+== Build
 
-* `src/` — Source code (scaffolded)
-* `public/` — Static assets
-* `app.config.ts` — SolidStart/Vinxi configuration
-* `DESIGN.md` — Design philosophy and guidelines
+[source,bash]
+----
+pnpm build
+----
 
-== 📝 Site Generation
+Static output lands in `.output/public` (deployed by GitHub Actions).
 
-To iterate on the design, provide the `SITE-GENERATION-PROMPT.md` to a design-capable AI.
+== Design
+
+See link:DESIGN.md[DESIGN.md] and link:SITE-GENERATION-PROMPT.md[SITE-GENERATION-PROMPT.md].
