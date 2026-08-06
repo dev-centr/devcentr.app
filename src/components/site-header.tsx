@@ -1,4 +1,5 @@
 import { LogoMark } from "~/components/logo-mark";
+import { ModeToggle } from "~/components/mode-toggle";
 
 const linkClass =
   "hidden font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground sm:inline";
@@ -20,6 +21,7 @@ export function SiteHeader() {
         <a href="https://devcentr.org" class={linkClass}>
           Org
         </a>
+        <ModeToggle />
         <a
           href="https://github.com/dev-centr/devcentr/releases"
           class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90"

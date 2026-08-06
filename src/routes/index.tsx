@@ -6,22 +6,22 @@ const capabilities = [
   {
     n: "01",
     title: "Ecosystem Management",
-    body: "Author and version shells, toolchains, and infrastructure as first-class citizens—not a pile of side-car scripts.",
+    body: "Treat shells, toolchains, and machine setup like real project assets—author them, version them, and share them instead of chasing config files.",
   },
   {
     n: "02",
     title: "Visual Blueprints",
-    body: "See projects, paths, and environments as a live map. Structure before syntax; systems before snippets.",
+    body: "Interactive maps of your architecture and environments so you can see how the pieces connect.",
   },
   {
     n: "03",
     title: "AI Synergy Hub",
-    body: "Give human-in-the-loop agents the environmental metadata they need so vibe-coding actually sticks.",
+    body: "Share reliable project and environment context with your AI tools so suggestions match how your stack really runs.",
   },
   {
     n: "04",
     title: "Reproducible Workspaces",
-    body: "Pin installs, audit changes, and rebuild the same machine story on Windows, macOS, and Linux.",
+    body: "Version your workspace setup so teammates and machines get the same working environment, from local to further down the line.",
   },
 ] as const;
 
@@ -54,7 +54,7 @@ export default function Home() {
 
                 <p class="rise rise-delay-2 mt-4 max-w-lg text-base leading-relaxed text-muted-foreground md:text-[1.05rem]">
                   The flagship DOS for Windows, macOS, and Linux—environments, toolchains, and project context in one
-                  control plane.
+                  control plane. Professional tooling with beginner-friendly onramps.
                 </p>
 
                 <div class="rise rise-delay-3 mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -95,12 +95,17 @@ export default function Home() {
 
           <footer class="border-t border-border/60">
             <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-10">
-              <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                A flagship product of{" "}
-                <a href="https://devcentr.org" class="text-foreground underline-offset-4 hover:underline">
-                  DevCentr.org
-                </a>
-              </p>
+              <div class="space-y-2">
+                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                  The first Development Orchestration Suite.
+                </p>
+                <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                  A flagship product of{" "}
+                  <a href="https://devcentr.org" class="text-foreground underline-offset-4 hover:underline">
+                    DevCentr.org
+                  </a>
+                </p>
+              </div>
               <p class="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">© 2026 DevCentr</p>
             </div>
           </footer>
