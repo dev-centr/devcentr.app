@@ -1,21 +1,46 @@
-link:https://devcentr.app[image:https://img.shields.io/badge/site-devcentr.app-2ea043?style=flat[devcentr.app]]
+ifndef::env-github[:icons: font]
+:toc: preamble
+:toclevels: 2
+:sectanchors:
+
+ifndef::env-github[]
+image:https://img.shields.io/github/contributors/dev-centr/devcentr.app.svg?style=for-the-badge[Contributors,link=https://github.com/dev-centr/devcentr.app/graphs/contributors]
+image:https://img.shields.io/github/forks/dev-centr/devcentr.app.svg?style=for-the-badge[Forks,link=https://github.com/dev-centr/devcentr.app/network/members]
+image:https://img.shields.io/github/stars/dev-centr/devcentr.app.svg?style=for-the-badge[Stars,link=https://github.com/dev-centr/devcentr.app/stargazers]
+image:https://img.shields.io/github/issues/dev-centr/devcentr.app.svg?style=for-the-badge[Issues,link=https://github.com/dev-centr/devcentr.app/issues]
+endif::[]
+
+ifdef::env-github[]
+image:https://img.shields.io/github/contributors/dev-centr/devcentr.app.svg?style=for-the-badge[Contributors]
+image:https://img.shields.io/github/forks/dev-centr/devcentr.app.svg?style=for-the-badge[Forks]
+image:https://img.shields.io/github/stars/dev-centr/devcentr.app.svg?style=for-the-badge[Stars]
+image:https://img.shields.io/github/issues/dev-centr/devcentr.app.svg?style=for-the-badge[Issues]
+endif::[]
 
 = devcentr.app
 
+Application homepage and marketing site for Dev-Centr.
+
+link:https://devcentr.app[Explore the site] ·
+link:https://github.com/dev-centr/devcentr.app/issues[Report Bug] ·
+link:https://github.com/dev-centr/devcentr.app/issues[Request Feature]
+
+== About The Project
+
 Product marketing site for the link:https://github.com/dev-centr/devcentr[DevCentr] Development Orchestration Suite (DOS).
 
-== Domain
+=== Domain
 
 * **URL:** link:https://devcentr.app[devcentr.app]
 * **Hosting:** GitHub Pages (static SolidStart export)
 
-== Stack
+== Built With
 
-* **Framework:** link:https://start.solidjs.com/[SolidStart]
-* **Styling:** Tailwind CSS v4 (steel/teal brand shared with link:https://devcentr.org[devcentr.org])
-* **Package manager:** pnpm
+* link:https://start.solidjs.com/[SolidStart]
+* Tailwind CSS v4 (steel/teal brand shared with link:https://devcentr.org[devcentr.org])
+* link:https://pnpm.io/[pnpm]
 
-== Getting started
+== Getting Started
 
 [source,bash]
 ----
@@ -23,7 +48,7 @@ pnpm install
 pnpm dev
 ----
 
-== Build
+== Usage
 
 [source,bash]
 ----
@@ -35,3 +60,10 @@ Static output lands in `.output/public` (deployed by GitHub Actions).
 == Design
 
 See link:DESIGN.md[DESIGN.md] and link:SITE-GENERATION-PROMPT.md[SITE-GENERATION-PROMPT.md].
+
+== Contact
+
+DevCentr.org — support@devcentr.org
+
+* Project: https://github.com/dev-centr/devcentr.app
+* Site: https://devcentr.app
