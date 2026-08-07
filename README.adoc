@@ -86,6 +86,22 @@ Static output lands in `.output/public` (deployed by GitHub Actions).
 
 See link:DESIGN.md[DESIGN.md] and link:SITE-GENERATION-PROMPT.md[SITE-GENERATION-PROMPT.md].
 
+== Contributing
+
+Contributions are welcome. Open an issue before large changes.
+
+=== Top contributors
+
+++++
+<a href="https://github.com/dev-centr/devcentr.app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dev-centr/devcentr.app" alt="contributors" />
+</a>
+++++
+
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
+
 == Contact
 
 DevCentr.org — support@devcentr.org
