@@ -6,7 +6,7 @@ const capabilities = [
   {
     n: "01",
     title: "Ecosystem Management",
-    body: "Treat shells, toolchains, and machine setup like real project assets—author them, version them, and share them instead of chasing config files.",
+    body: "Treat shells, toolchains, and environments like real project assets—author them, version them, and share them instead of chasing config files.",
   },
   {
     n: "02",
@@ -21,7 +21,12 @@ const capabilities = [
   {
     n: "04",
     title: "Reproducible Workspaces",
-    body: "Version your workspace setup so teammates and machines get the same working environment, from local to further down the line.",
+    body: "Version your workspace setup so teammates get the same working environment—from local through the rest of the path.",
+  },
+  {
+    n: "05",
+    title: "DevOps",
+    body: "CI/CD, infra, and traditional ops where they sit on the path—one facet of the suite, not the whole product.",
   },
 ] as const;
 
@@ -31,7 +36,7 @@ export default function Home() {
       <Title>DevCentr — Development Orchestration Suite</Title>
       <Meta
         name="description"
-        content="DevCentr is a Development Orchestration Suite (DOS): orchestrate environments, toolchains, and context around the developer—not just the editor."
+        content="DevCentr is a Development Orchestration Suite (DOS): orchestrate environments, toolchains, projects, and the ops around the code—not just the editor."
       />
 
       <div class="plane-surface relative min-h-dvh">
@@ -53,8 +58,9 @@ export default function Home() {
                 </p>
 
                 <p class="rise rise-delay-2 mt-4 max-w-lg text-base leading-relaxed text-muted-foreground md:text-[1.05rem]">
-                  The flagship DOS for Windows, macOS, and Linux—environments, toolchains, and project context in one
-                  control plane. Professional tooling with beginner-friendly onramps.
+                  The flagship Development Orchestration Suite for Windows, macOS, and Linux—environments, toolchains,
+                  projects, and the ops around them in one control plane. DevOps is one facet; think “Dev OS” only as a
+                  quiet mental model.
                 </p>
 
                 <div class="rise rise-delay-3 mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -80,6 +86,10 @@ export default function Home() {
                 <h2 class="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
                   One suite. The whole lifecycle around the code.
                 </h2>
+                <p class="mt-4 max-w-2xl text-muted-foreground">
+                  DevOps is one facet of the DOS—alongside environment orchestration, visual blueprints, and grounded
+                  AI context. The public category is Development Orchestration Suite.
+                </p>
                 <ul class="mt-14 grid gap-10 md:grid-cols-2">
                   {capabilities.map((c) => (
                     <li class="border-t border-border/70 pt-6">

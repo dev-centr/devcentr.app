@@ -2,7 +2,7 @@
 
 ## Direction
 
-**Product control plane.** Same steel/teal family as `devcentr.org`, but this site sells the **DevCentr app** (DOS)—not the org laboratory.
+**Product control plane.** Same steel/teal family as `devcentr.org`, but this site sells the **DevCentr app** as a Development Orchestration Suite (DOS). DevOps is one facet of capabilities; “Dev OS” may appear once as a quiet mental model. The org site owns the cultural-resource / development-path pitch; lab identity lives elsewhere.
 
 ## Color
 
