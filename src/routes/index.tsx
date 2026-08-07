@@ -59,8 +59,7 @@ export default function Home() {
 
                 <p class="rise rise-delay-2 mt-4 max-w-lg text-base leading-relaxed text-muted-foreground md:text-[1.05rem]">
                   The flagship Development Orchestration Suite for Windows, macOS, and Linux—environments, toolchains,
-                  projects, and the ops around them in one control plane. DevOps is one facet; think “Dev OS” only as a
-                  quiet mental model.
+                  projects, and the ops around them in one control plane.
                 </p>
 
                 <div class="rise rise-delay-3 mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -88,7 +87,8 @@ export default function Home() {
                 </h2>
                 <p class="mt-4 max-w-2xl text-muted-foreground">
                   DevOps is one facet of the DOS—alongside environment orchestration, visual blueprints, and grounded
-                  AI context. The public category is Development Orchestration Suite.
+                  AI context. Think “Dev OS” only as a quiet mental model; the public category is Development
+                  Orchestration Suite.
                 </p>
                 <ul class="mt-14 grid gap-10 md:grid-cols-2">
                   {capabilities.map((c) => (

@@ -27,9 +27,9 @@ Vision and content for the **DevCentr** flagship product marketing site.
 
 ## Messaging
 
-1. **app hero (pitch):** “Stop managing tools. Orchestrate ecosystems.”
-2. **app under-copy:** Flagship DOS for Windows, macOS, and Linux; DevOps is one facet; quiet “Dev OS” mental-model nod
-3. **capabilities:** Include DevOps as a listed capability among ecosystem / visual / AI / reproducible workspaces
+1. **app hero (pitch):** “Stop managing tools. Orchestrate ecosystems.” — no DevOps / Dev OS callouts in the hero
+2. **app under-copy:** Flagship DOS for Windows, macOS, and Linux—environments, toolchains, projects, and the ops around them
+3. **capabilities (below fold):** Include DevOps as a listed capability; Dev OS mental-model nod belongs here or in body, not the hero
 4. **org outcome pitch:** Lives on https://devcentr.org — not this hero
 5. **Quiet footer claim:** “The first Development Orchestration Suite.”
 
