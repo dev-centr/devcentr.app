@@ -1,5 +1,3 @@
-import { destinationBackground } from "~/lib/theme";
-import { runDualLayerThemeTransition } from "~/lib/theme-transition";
 import { useTheme } from "~/components/theme-provider";
 
 function SunIcon() {
@@ -30,22 +28,9 @@ function MoonIcon() {
 
 export function ModeToggle() {
   const { resolved, setColorMode } = useTheme();
-  let busy = false;
 
-  const handleClick = async (event: MouseEvent) => {
-    if (busy) return;
-    const next = resolved() === "dark" ? "light" : "dark";
-    const origin = event.currentTarget as HTMLElement;
-    busy = true;
-    try {
-      await runDualLayerThemeTransition({
-        origin,
-        destinationBg: destinationBackground(next),
-        commit: () => setColorMode(next),
-      });
-    } finally {
-      busy = false;
-    }
+  const handleClick = () => {
+    setColorMode(resolved() === "dark" ? "light" : "dark");
   };
 
   return (
