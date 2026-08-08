@@ -1,5 +1,5 @@
 import { useTheme } from "~/components/theme-provider";
-import { applyThemeWithCircleReveal, revealOriginFromEvent } from "~/lib/theme-reveal";
+import { applyThemeWithCircleReveal } from "~/lib/theme-reveal";
 
 function SunIcon() {
   return (
@@ -32,16 +32,16 @@ export function ModeToggle() {
 
   const handleClick = (event: MouseEvent) => {
     const next = resolved() === "dark" ? "light" : "dark";
-    applyThemeWithCircleReveal(
-      revealOriginFromEvent(event, event.currentTarget),
-      () => setColorMode(next),
-      { next },
-    );
+    applyThemeWithCircleReveal(() => setColorMode(next), {
+      next,
+      toggle: event.currentTarget,
+    });
   };
 
   return (
     <button
       type="button"
+      data-theme-toggle
       class="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-border/70 bg-background/55 text-muted-foreground backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary"
       onClick={handleClick}
       aria-label={resolved() === "dark" ? "Use light appearance" : "Use dark appearance"}
