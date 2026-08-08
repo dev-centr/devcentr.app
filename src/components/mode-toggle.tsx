@@ -1,5 +1,5 @@
 import { useTheme } from "~/components/theme-provider";
-import { applyThemeWithCircleReveal, elementCenter } from "~/lib/theme-reveal";
+import { applyThemeWithCircleReveal, revealOriginFromEvent } from "~/lib/theme-reveal";
 
 function SunIcon() {
   return (
@@ -32,12 +32,9 @@ export function ModeToggle() {
 
   const handleClick = (event: MouseEvent) => {
     const next = resolved() === "dark" ? "light" : "dark";
-    const target = event.currentTarget;
-    if (!(target instanceof Element)) {
-      setColorMode(next);
-      return;
-    }
-    applyThemeWithCircleReveal(elementCenter(target), () => setColorMode(next));
+    applyThemeWithCircleReveal(revealOriginFromEvent(event, event.currentTarget), () =>
+      setColorMode(next),
+    );
   };
 
   return (
