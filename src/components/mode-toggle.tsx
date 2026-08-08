@@ -1,5 +1,5 @@
 import { useTheme } from "~/components/theme-provider";
-import { applyThemeWithCircleReveal, warmThemeRevealEngine } from "~/lib/theme-reveal";
+import { applyThemeWithCircleReveal } from "~/lib/theme-reveal";
 
 function SunIcon() {
   return (
@@ -43,8 +43,6 @@ export function ModeToggle() {
       type="button"
       data-theme-toggle
       class="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-border/70 bg-background/55 text-muted-foreground backdrop-blur-sm transition-colors hover:border-primary/35 hover:bg-primary/8 hover:text-primary"
-      onPointerEnter={warmThemeRevealEngine}
-      onFocus={warmThemeRevealEngine}
       onClick={handleClick}
       aria-label={resolved() === "dark" ? "Use light appearance" : "Use dark appearance"}
     >
