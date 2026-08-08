@@ -17,6 +17,7 @@ import {
   type ColorMode,
   type ResolvedColorMode,
 } from "~/lib/theme";
+import { syncThemeRevealBaseline } from "~/lib/theme-reveal";
 
 type ThemeContextValue = {
   colorMode: () => ColorMode;
@@ -55,12 +56,15 @@ export function ThemeProvider(props: ParentProps) {
   });
 
   onMount(() => {
+    syncThemeRevealBaseline(resolved());
+
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
     const onSchemeChange = () => {
       try {
         const stored = localStorage.getItem(THEME_STORAGE_KEY);
         if (stored === "light" || stored === "dark") {
           setColorMode("system");
+          syncThemeRevealBaseline(getSystemColorMode());
           return;
         }
       } catch {
@@ -70,6 +74,8 @@ export function ThemeProvider(props: ParentProps) {
         const next = getSystemColorMode();
         setResolved(next);
         applyResolvedTheme(next);
+        // New OS scheme becomes the baseline for forward/reverse reveal direction.
+        syncThemeRevealBaseline(next);
       }
     };
     mql.addEventListener("change", onSchemeChange);
