@@ -17,7 +17,7 @@ import {
   type ColorMode,
   type ResolvedColorMode,
 } from "~/lib/theme";
-import { syncThemeRevealBaseline } from "~/lib/theme-reveal";
+import { syncThemeRevealBaseline, warmThemeRevealEngine } from "~/lib/theme-reveal";
 
 type ThemeContextValue = {
   colorMode: () => ColorMode;
@@ -58,6 +58,16 @@ export function ThemeProvider(props: ParentProps) {
   onMount(() => {
     syncThemeRevealBaseline(resolved());
 
+    let cancelled = false;
+    const scheduleWarm = () => {
+      if (cancelled) return;
+      warmThemeRevealEngine();
+    };
+    const warmHandle =
+      typeof window.requestIdleCallback === "function"
+        ? window.requestIdleCallback(scheduleWarm, { timeout: 2500 })
+        : window.setTimeout(scheduleWarm, 800);
+
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
     const onSchemeChange = () => {
       try {
@@ -79,7 +89,15 @@ export function ThemeProvider(props: ParentProps) {
       }
     };
     mql.addEventListener("change", onSchemeChange);
-    onCleanup(() => mql.removeEventListener("change", onSchemeChange));
+    onCleanup(() => {
+      cancelled = true;
+      mql.removeEventListener("change", onSchemeChange);
+      if (typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(warmHandle as number);
+      } else {
+        window.clearTimeout(warmHandle as number);
+      }
+    });
   });
 
   return (
