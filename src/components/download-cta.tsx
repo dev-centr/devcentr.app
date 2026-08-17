@@ -71,7 +71,7 @@ export function DownloadCta(props: Props) {
   const detectedLine = () => {
     const k = kind();
     if (!k) return "Detecting…";
-    return `(Download) ${detectedLabel(k)} detected`;
+    return `${detectedLabel(k)} detected`;
   };
   const ready = () => kind() !== null && (usesCatalog() || release() !== undefined);
   const available = (id: DistroId) => {
