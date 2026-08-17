@@ -23,7 +23,7 @@ export function SiteHeader() {
         </a>
         <ModeToggle />
         <a
-          href="https://github.com/dev-centr/devcentr/releases"
+          href="#download"
           class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Download

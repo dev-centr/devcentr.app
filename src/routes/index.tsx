@@ -1,6 +1,8 @@
 import { MetaProvider, Title, Meta } from "@solidjs/meta";
+import { DownloadCta } from "~/components/download-cta";
 import { HeroOrbit } from "~/components/hero-orbit";
 import { SiteHeader } from "~/components/site-header";
+import { DEVCENTR_DOWNLOADS } from "~/lib/product-downloads";
 
 const capabilities = [
   {
@@ -62,13 +64,12 @@ export default function Home() {
                   projects, and the ops around them in one control plane.
                 </p>
 
-                <div class="rise rise-delay-3 mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                  <a
-                    href="https://github.com/dev-centr/devcentr/releases"
-                    class="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90"
-                  >
-                    Download DevCentr
-                  </a>
+                <div class="rise rise-delay-3 mt-10 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:items-start">
+                  <DownloadCta
+                    label="Download DevCentr"
+                    downloads={DEVCENTR_DOWNLOADS}
+                    anchor="download"
+                  />
                   <a
                     href="https://docs.devcentr.org"
                     class="inline-flex h-11 items-center justify-center rounded-md border border-border/80 bg-background/40 px-8 font-mono text-xs font-medium uppercase tracking-[0.16em] text-foreground backdrop-blur-sm transition-colors hover:bg-accent hover:text-accent-foreground"
