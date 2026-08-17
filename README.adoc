@@ -82,6 +82,8 @@ pnpm build
 
 Static output lands in `.output/public` (deployed by GitHub Actions).
 
+The homepage **Download** button prefers `DevCentr-windows-x64-setup.exe` from the latest GitHub release. The zip is offered as a **portable** link only.
+
 == Design
 
 See link:DESIGN.md[DESIGN.md] and link:SITE-GENERATION-PROMPT.md[SITE-GENERATION-PROMPT.md].

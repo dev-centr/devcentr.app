@@ -8,7 +8,12 @@ import {
   type DetectedKind,
   type DistroId,
 } from "~/lib/detect-platform";
-import { fetchLatestRelease, pickAsset, type LatestRelease } from "~/lib/github-release";
+import {
+  fetchLatestRelease,
+  pickInstaller,
+  pickPortable,
+  type LatestRelease,
+} from "~/lib/github-release";
 
 type Props = {
   /** Shown on the primary control, e.g. "Download DevCentr". */
@@ -17,10 +22,12 @@ type Props = {
   /** Anchor for in-page Download links. Omit on secondary copies. */
   anchor?: string;
   /**
-   * Canonical product URLs keyed by platform (e.g. GitHub latest/download).
-   * When set, these win over GitHub API matching.
+   * Canonical installer URLs (setup EXE) keyed by platform.
+   * Used when GitHub API fails; ignored when the latest release has no installer.
    */
   downloads?: Partial<Record<DistroId, string>>;
+  /** Canonical portable-archive URLs. Zip is never the primary button. */
+  portables?: Partial<Record<DistroId, string>>;
   owner?: string;
   repo?: string;
 };
@@ -31,8 +38,6 @@ export function DownloadCta(props: Props) {
   const [release, setRelease] = createSignal<LatestRelease | null | undefined>(undefined);
   const [error, setError] = createSignal<string | null>(null);
 
-  const usesCatalog = () => !!props.downloads && Object.keys(props.downloads).length > 0;
-
   onMount(() => {
     void (async () => {
       try {
@@ -41,10 +46,6 @@ export function DownloadCta(props: Props) {
         setChosen((c) => c ?? desktopDefault(detected));
       } catch {
         setKind("unknown");
-      }
-      if (usesCatalog()) {
-        setRelease(null);
-        return;
       }
       if (!props.owner || !props.repo) {
         setRelease(null);
@@ -60,26 +61,40 @@ export function DownloadCta(props: Props) {
   });
 
   const selected = () => chosen();
-  const href = () => {
+  const installerHref = () => {
     const id = selected();
     if (!id) return undefined;
-    if (usesCatalog()) return props.downloads?.[id];
     const rel = release();
+    const fromRelease = pickInstaller(rel ?? null, id);
+    if (fromRelease) return fromRelease.browser_download_url;
     if (rel === undefined) return undefined;
-    return pickAsset(rel ?? null, id)?.browser_download_url;
+    if (rel === null) return props.downloads?.[id];
+    return undefined;
+  };
+  const portableHref = () => {
+    const id = selected();
+    if (!id) return undefined;
+    const rel = release();
+    const fromRelease = pickPortable(rel ?? null, id);
+    if (fromRelease) return fromRelease.browser_download_url;
+    if (rel === undefined) return undefined;
+    return props.portables?.[id];
   };
   const detectedLine = () => {
     const k = kind();
     if (!k) return "Detecting…";
     return `${detectedLabel(k)} detected`;
   };
-  const ready = () => kind() !== null && (usesCatalog() || release() !== undefined);
-  const available = (id: DistroId) => {
-    if (usesCatalog()) return !!props.downloads?.[id];
-    return !!pickAsset(release() ?? null, id);
+  const ready = () => kind() !== null && release() !== undefined;
+  const installerAvailable = (id: DistroId) => {
+    const rel = release();
+    if (rel === undefined) return false;
+    if (pickInstaller(rel, id)) return true;
+    return rel === null && !!props.downloads?.[id];
   };
-  const missingRelease = () => ready() && !usesCatalog() && release() === null;
-  const missingAsset = () => ready() && selected() != null && !href();
+  const missingRelease = () => ready() && release() === null && !props.downloads?.[selected() ?? "windows-x64"];
+  const missingInstaller = () => ready() && selected() != null && !installerHref() && !!portableHref();
+  const missingAsset = () => ready() && selected() != null && !installerHref() && !portableHref();
 
   const btnClass =
     "inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90 disabled:pointer-events-none disabled:opacity-50";
@@ -87,7 +102,7 @@ export function DownloadCta(props: Props) {
   return (
     <div id={props.anchor} class={`flex flex-col items-start gap-2 ${props.class ?? ""}`}>
       <Show
-        when={href()}
+        when={installerHref()}
         fallback={
           <button type="button" class={btnClass} disabled>
             {props.label}
@@ -121,13 +136,27 @@ export function DownloadCta(props: Props) {
             {(d) => (
               <option value={d.id}>
                 {d.label}
-                {ready() && !available(d.id) ? " — none yet" : ""}
+                {ready() && !installerAvailable(d.id) ? " — none yet" : ""}
               </option>
             )}
           </For>
         </select>
       </label>
 
+      <Show when={portableHref()}>
+        {(url) => (
+          <p class="text-[11px] leading-snug text-muted-foreground">
+            <a class="underline-offset-4 hover:underline" href={url()} rel="noopener noreferrer">
+              Portable zip
+            </a>
+            {" — no installer"}
+          </p>
+        )}
+      </Show>
+
+      <Show when={missingInstaller()}>
+        <p class="text-[11px] text-muted-foreground">Installer not in this release yet.</p>
+      </Show>
       <Show when={missingRelease()}>
         <p class="text-[11px] text-muted-foreground">No release yet.</p>
       </Show>

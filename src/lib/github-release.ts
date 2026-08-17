@@ -69,6 +69,11 @@ function matchesDistro(name: string, distro: DistroId): boolean {
   return /x64|amd64|x86_64|win64/.test(n) || os === "windows";
 }
 
+function isPortableArchive(name: string): boolean {
+  const n = name.toLowerCase();
+  return n.endsWith(".zip") || n.endsWith(".tar.gz") || n.endsWith(".tgz") || n.endsWith(".7z");
+}
+
 function assetRank(name: string, os: "windows" | "macos" | "linux"): number {
   const n = name.toLowerCase();
   if (os === "windows") {
@@ -93,10 +98,28 @@ function assetRank(name: string, os: "windows" | "macos" | "linux"): number {
   return 1;
 }
 
-export function pickAsset(release: LatestRelease | null | undefined, distro: DistroId): ReleaseAsset | null {
+function bestHit(
+  release: LatestRelease | null | undefined,
+  distro: DistroId,
+  pred: (name: string) => boolean,
+): ReleaseAsset | null {
   if (!release?.assets.length) return null;
   const { os } = parseDistro(distro);
-  const hits = release.assets.filter((a) => matchesDistro(a.name, distro));
+  const hits = release.assets.filter((a) => matchesDistro(a.name, distro) && pred(a.name));
   if (!hits.length) return null;
   return hits.slice().sort((a, b) => assetRank(b.name, os) - assetRank(a.name, os))[0] ?? null;
+}
+
+/** Prefer setup.exe / .exe / .msi — never a zip. */
+export function pickInstaller(release: LatestRelease | null | undefined, distro: DistroId): ReleaseAsset | null {
+  return bestHit(release, distro, (n) => !isPortableArchive(n));
+}
+
+/** Portable archive for a distro, if the release attached one. */
+export function pickPortable(release: LatestRelease | null | undefined, distro: DistroId): ReleaseAsset | null {
+  return bestHit(release, distro, isPortableArchive);
+}
+
+export function pickAsset(release: LatestRelease | null | undefined, distro: DistroId): ReleaseAsset | null {
+  return pickInstaller(release, distro) ?? pickPortable(release, distro);
 }

@@ -43,7 +43,7 @@ Vision and content for the **DevCentr** flagship product marketing site.
 
 ## Links
 
-- https://github.com/dev-centr/devcentr/releases — download
+- https://github.com/dev-centr/devcentr/releases — download (`DevCentr-windows-x64-setup.exe` primary; `DevCentr-windows-x64.zip` portable only)
 - https://docs.devcentr.org — docs
 - https://devcentr.org — organization
 - https://github.com/dev-centr/devcentr — source
