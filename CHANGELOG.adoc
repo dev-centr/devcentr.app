@@ -1,5 +1,9 @@
 ﻿= Changelog
 
+== 2026-11-15
+
+* The README contents list now sits under the header inside the expander.
+
 == 2026-10-06 -- Dependency refresh
 
 * Refreshed deprecated transitive dependencies within existing ranges: `@ungap/structured-clone` 1.4.0 and `tar` 7.5.22.

@@ -1,5 +1,6 @@
 ifndef::env-github[:icons: font]
-:toc: preamble
+:toc: macro
+:toc-title:
 :toclevels: 2
 :sectanchors:
 
@@ -38,6 +39,15 @@ link:https://devcentr.app[Explore the site] ·
 link:https://github.com/dev-centr/devcentr.app/issues[Report Bug] ·
 link:https://github.com/dev-centr/devcentr.app/issues[Request Feature]
 endif::[]
+
+++++
+<details>
+<summary>Table of Contents</summary>
+++++
+toc::[]
+++++
+</details>
+++++
 
 == About The Project
 
